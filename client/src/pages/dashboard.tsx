@@ -25,12 +25,12 @@ function HomeSection({ stats, isLoadingStats }: { stats: DashboardStats; isLoadi
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <Card className="p-8 bg-gradient-to-br from-primary/20 via-secondary/20 to-primary/30 backdrop-blur-md border border-white/20 shadow-2xl">
+      <Card className="p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 border-0 shadow-xl">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-white drop-shadow-lg">
+          <h2 className="text-3xl font-bold text-foreground">
             Welcome to {t('title')}
           </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto drop-shadow-md">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Advanced AI-powered system for comprehensive DPR quality assessment, 
             compliance verification, and risk analysis for infrastructure projects.
           </p>
@@ -311,14 +311,12 @@ function DashboardContent() {
   };
 
   return (
-    <div className="min-h-screen main-background">
-      <div className="min-h-screen background-overlay">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
-          <main className="animate-fadeIn">
-            {renderActiveTab()}
-          </main>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+        <main className="animate-fadeIn">
+          {renderActiveTab()}
+        </main>
       </div>
     </div>
   );
