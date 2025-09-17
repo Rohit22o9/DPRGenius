@@ -1,0 +1,30 @@
+DETAILED PROJECT REPORT (DPR)
+Project Name: Rural Road Construction in Assam
+Location: Guwahati District, Assam
+Total Budget: Rs. 50,00,000
+
+TECHNICAL SPECIFICATIONS:
+- Road length: 5 kilometers
+- Width: 3.5 meters
+- Surface type: Bituminous
+- Drainage: Side drains with proper gradient
+
+BUDGET BREAKDOWN:
+- Material costs: Rs. 30,00,000
+- Labor costs: Rs. 15,00,000  
+- Equipment: Rs. 3,00,000
+- Administrative: Rs. 2,00,000
+
+TIMELINE:
+Phase 1: Land acquisition - 2 months
+Phase 2: Construction - 8 months
+Phase 3: Quality testing - 1 month
+
+ENVIRONMENTAL CLEARANCE:
+Environmental impact assessment completed.
+Forest clearance obtained from State Forest Department.
+
+SAFETY MEASURES:
+- Worker safety protocols implemented
+- Emergency response plan in place
+- Quality control checkpoints established
