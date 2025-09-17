@@ -1,9 +1,12 @@
 import OpenAI from "openai";
-import { AnalysisData, RiskFactor, ComplianceIssue } from "@shared/schema";
+import { AnalysisData, RiskFactor, ComplianceIssue, DprAnalysis } from "@shared/schema";
+import { QuantumInspiredOptimizer } from './quantumOptimizer';
+import { MultiAgentSystem } from './aiAgents';
+
 
 // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY || process.env.API_KEY || "your_api_key_here" 
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || process.env.API_KEY || "your_api_key_here"
 });
 
 export interface DprAnalysisResult {
@@ -25,7 +28,7 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
   const hasEnvironmental = /environment|clearance|forest|ecology|green|pollution/i.test(text);
   const hasSafety = /safety|security|risk|emergency|protocol/i.test(text);
   const hasLegal = /legal|compliance|approval|permit|clearance|authority/i.test(text);
-  
+
   const sections = {
     technicalSpecs: hasTechnical ? 75 : 45,
     budgetDetails: hasbudget ? 80 : 35,
@@ -34,14 +37,14 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
     safety: hasSafety ? 70 : 30,
     legalCompliance: hasLegal ? 75 : 35
   };
-  
+
   const overallScore = Math.round(Object.values(sections).reduce((a, b) => a + b, 0) / 6);
   const completenessScore = Math.min(95, overallScore + 10);
   const complianceScore = sections.legalCompliance;
-  
+
   const riskFactors: RiskFactor[] = [];
   const complianceIssues: ComplianceIssue[] = [];
-  
+
   if (!hasbudget) {
     riskFactors.push({
       category: "Budget Analysis",
@@ -51,7 +54,7 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
       impact: "May require additional financial verification"
     });
   }
-  
+
   if (!hasTimeline) {
     complianceIssues.push({
       title: "Timeline Documentation",
@@ -61,7 +64,7 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
       recommendation: "Include detailed project phases and milestones"
     });
   }
-  
+
   if (!hasEnvironmental) {
     complianceIssues.push({
       title: "Environmental Clearance",
@@ -71,7 +74,7 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
       recommendation: "Ensure environmental clearance documentation is complete"
     });
   }
-  
+
   return {
     overallScore,
     completenessScore,
@@ -104,7 +107,7 @@ function createFallbackAnalysis(text: string, filename: string): DprAnalysisResu
 export async function analyzeDprContent(text: string, filename: string): Promise<DprAnalysisResult> {
   try {
     const prompt = `
-You are an expert DPR (Detailed Project Report) analyst for the Ministry of Development of North Eastern Region (MDoNER). 
+You are an expert DPR (Detailed Project Report) analyst for the Ministry of Development of North Eastern Region (MDoNER).
 Analyze the following DPR content and provide a comprehensive assessment.
 
 DOCUMENT: ${filename}
@@ -113,7 +116,7 @@ CONTENT: ${text}
 Please analyze this DPR and return a JSON response with the following structure:
 {
   "overallScore": number (0-100),
-  "completenessScore": number (0-100), 
+  "completenessScore": number (0-100),
   "complianceScore": number (0-100),
   "riskLevel": "low" | "medium" | "high",
   "riskFactors": [
@@ -191,7 +194,7 @@ Compliance Issues:
     });
 
     const result = JSON.parse(response.choices[0].message.content || '{}');
-    
+
     // Validate and sanitize the response
     return {
       overallScore: Math.max(0, Math.min(100, result.overallScore || 0)),
@@ -217,7 +220,7 @@ Compliance Issues:
   } catch (error) {
     console.error('OpenAI analysis failed:', error);
     console.log('Falling back to local analysis system...');
-    
+
     // Return fallback analysis instead of throwing error
     return createFallbackAnalysis(text, filename);
   }

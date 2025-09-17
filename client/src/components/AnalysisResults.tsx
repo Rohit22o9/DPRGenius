@@ -9,6 +9,7 @@ import { DprAnalysis } from '@shared/schema';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { FileDown, Save, Share2, Plus, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { ManualOverride } from './ManualOverride';
 
 interface AnalysisResultsProps {
   analysisId: string;
@@ -272,6 +273,16 @@ export function AnalysisResults({ analysisId, onNewAnalysis }: AnalysisResultsPr
           </Card>
         </div>
       )}
+
+      {/* Manual Override Section */}
+      <ManualOverride 
+        analysisId={analysisId}
+        currentScore={analysis.overallScore}
+        onOverrideSubmit={(override) => {
+          console.log('Official override submitted:', override);
+          // In a real implementation, this would update the analysis
+        }}
+      />
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-4">

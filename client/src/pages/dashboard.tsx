@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { RiskIndicator } from '@/components/RiskIndicator';
 import { useLanguage, LanguageContext, useLanguageProvider } from '@/hooks/useLanguage';
 import { CheckCircle, AlertTriangle, TrendingUp, Upload, Activity, Shield, FileText, BarChart3 } from 'lucide-react';
+import AboutPage from './about';
 
 interface DashboardStats {
   totalAnalyzed: number;
@@ -302,6 +303,8 @@ function DashboardContent() {
         return <RiskDashboard />;
       case 'reports':
         return <RecentAnalyses />;
+      case 'about':
+        return <AboutPage />;
       default:
         return <HomeSection stats={stats} isLoadingStats={isLoadingStats} />;
     }

@@ -32,7 +32,8 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
     { id: 'upload', label: t('uploadDpr'), icon: Upload, badge: null },
     { id: 'results', label: t('analysisResults'), icon: BarChart3, badge: null },
     { id: 'risks', label: t('riskDashboard'), icon: AlertTriangle, badge: 'New' },
-    { id: 'reports', label: t('reportsHistory'), icon: History, badge: null }
+    { id: 'reports', label: t('reportsHistory'), icon: History, badge: null },
+    { id: 'about', label: 'About Us', icon: User, badge: null }
   ];
 
   return (
