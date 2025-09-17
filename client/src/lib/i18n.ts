@@ -4,6 +4,12 @@ export const translations = {
     title: "MDoNER DPR Assessment",
     subtitle: "AI-Powered Quality & Risk Analysis",
     
+    // Navigation
+    home: "Home",
+    uploadDpr: "Upload DPR", 
+    riskDashboard: "Risk Dashboard",
+    reportsHistory: "Reports & History",
+    
     // Dashboard Stats
     totalAnalyzed: "Total DPRs Analyzed",
     compliantDprs: "Compliant DPRs", 
@@ -90,6 +96,12 @@ export const translations = {
     title: "MDoNER DPR मूल्यांकन",
     subtitle: "AI-संचालित गुणवत्ता और जोखिम विश्लेषण",
     
+    // Navigation
+    home: "होम",
+    uploadDpr: "DPR अपलोड करें",
+    riskDashboard: "जोखिम डैशबोर्ड", 
+    reportsHistory: "रिपोर्ट और इतिहास",
+    
     // Dashboard Stats
     totalAnalyzed: "कुल DPR विश्लेषित",
     compliantDprs: "अनुपालित DPR",
@@ -174,6 +186,12 @@ export const translations = {
     // Header
     title: "MDoNER DPR মূল্যায়ন",
     subtitle: "AI-চালিত গুণমান আৰু বিপদাশংকা বিশ্লেষণ",
+    
+    // Navigation
+    home: "হোম",
+    uploadDpr: "DPR আপল'ড কৰক",
+    riskDashboard: "বিপদাশংকা ডেচব'ৰ্ড",
+    reportsHistory: "প্ৰতিবেদন আৰু ইতিহাস",
     
     // Dashboard Stats
     totalAnalyzed: "মুঠ DPR বিশ্লেষিত",
