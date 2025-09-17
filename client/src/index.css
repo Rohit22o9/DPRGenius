@@ -118,6 +118,19 @@
     font-family: var(--font-sans);
   }
 
+  .main-background {
+    background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  .background-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+  }
+
   .upload-zone {
     transition: all 0.3s ease;
   }
@@ -133,6 +146,13 @@
   
   .card-shadow:hover {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   }
   
   .animate-fadeIn {
